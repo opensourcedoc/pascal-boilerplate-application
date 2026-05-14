@@ -1,0 +1,12 @@
+#!/bin/sh
+
+CWD=$(cd "$(dirname "$0")" && pwd)
+
+. "${CWD}/setting.sh"
+
+if ! [ -x "${BIN_DIR}/${EXECUTABLE}" ]; then
+    echo "${EXECUTABLE} is not compiled" >&2
+    exit 1
+fi
+
+exec "${BIN_DIR}/${EXECUTABLE}"
