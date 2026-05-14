@@ -10,3 +10,5 @@ if exist "%OBJ_DIR%" rd /S /Q "%OBJ_DIR%"
 
 mkdir "%BIN_DIR%"
 mkdir "%OBJ_DIR%"
+
+endlocal

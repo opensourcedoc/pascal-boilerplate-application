@@ -11,3 +11,5 @@ if not exist "%BIN_DIR%%EXECUTABLE%" (
 )
 
 "%BIN_DIR%%EXECUTABLE%"
+
+endlocal

@@ -1,5 +1,4 @@
 @echo off
-setlocal
 
 set ENTRY=Main.lpr
 set PROGRAM=cli

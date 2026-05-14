@@ -9,6 +9,6 @@ program Main;
 begin
   Writeln('Hello World');
 
-  {* Hold the terminal in Debug mode. *}
+  (* Hold the terminal in Debug mode. *)
   {$ifdef DEBUG} readln; {$endif}
 end.
