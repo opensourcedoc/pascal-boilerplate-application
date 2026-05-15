@@ -13,6 +13,12 @@ call "%CWD%setting.bat"
 if not exist "%BIN_DIR%" mkdir "%BIN_DIR%"
 if not exist "%OBJ_DIR%" mkdir "%OBJ_DIR%"
 
-fpc -O3 "-o%EXECUTABLE%" "-Fu%SRC_DIR%" "-FU%OBJ_DIR%" "-FE%BIN_DIR%" "%SRC_DIR%%ENTRY%"
+fpc -O3 ^
+    "-o%BIN_DIR%%EXECUTABLE%" ^
+    "-Fu%SRC_DIR%" ^
+    "-Fi%INCLUDE_DIR%" ^
+    "-FU%OBJ_DIR%" ^
+    "-FE%BIN_DIR%" ^
+    "%SRC_DIR%%ENTRY%"
 
 endlocal

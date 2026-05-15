@@ -12,4 +12,10 @@ CWD=$(cd "$(dirname "$0")" && pwd)
 mkdir -p "$BIN_DIR"
 mkdir -p "$OBJ_DIR"
 
-fpc -O3 "-o$EXECUTABLE" "-Fu$SRC_DIR" "-FU$OBJ_DIR" "-FE$BIN_DIR" "${SRC_DIR}/${ENTRY}"
+fpc -O3 \
+    "-o${BIN_DIR}/${EXECUTABLE}" \
+    "-Fu$SRC_DIR" \
+    "-Fi$INCLUDE_DIR" \
+    "-FU$OBJ_DIR" \
+    "-FE$BIN_DIR" \
+    "${SRC_DIR}/${ENTRY}"

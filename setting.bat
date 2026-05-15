@@ -9,4 +9,5 @@ if "%CWD:~-1%"=="\" set "CWD=%CWD:~0,-1%"
 
 set "SRC_DIR=%CWD%\src\"
 set "BIN_DIR=%CWD%\bin\"
+set "INCLUDE_DIR=%CWD%\include\"
 set "OBJ_DIR=%CWD%\obj\"
