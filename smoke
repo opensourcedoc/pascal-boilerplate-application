@@ -1,0 +1,43 @@
+#!/bin/sh
+
+CWD=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd) || exit 1
+
+SMOKE_LIBRARY="${CWD}/tools/lib/smoke.sh"
+
+if [ -f "$SMOKE_LIBRARY" ]; then
+    . "$SMOKE_LIBRARY"
+else
+    echo "Error: Unable to load the smoke library: $SMOKE_LIBRARY" >&2
+    exit 1
+fi
+
+SETTING="${CWD}/setting.sh"
+
+if [ -f "$SETTING" ]; then
+    . "$SETTING"
+else
+    echo "Error: Unable to load the repository setting: $SETTING" >&2
+    exit 1
+fi 
+
+PROGRAM="${BIN_DIR}/${EXECUTABLE}"
+
+if [ ! -x "$PROGRAM" ]; then
+    echo "$PROGRAM not compiled" >&2
+    exit 1
+fi
+
+FAILED_TESTS=0
+
+RUN_TEST() {
+    "$@" || FAILED_TESTS=$((FAILED_TESTS + 1))
+}
+
+RUN_TEST SMOKE_RUN "$PROGRAM"
+
+if [ "$FAILED_TESTS" -ne 0 ]; then
+    echo "[Result] $FAILED_TESTS test(s) failed." >&2
+    exit 1
+fi
+
+echo "[Result] All tests passed successfully."

@@ -1,8 +1,25 @@
 #!/bin/sh
 
-CWD=$(cd "$(dirname "$0")" && pwd)
+CWD=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd) || exit 1
 
-. "${CWD}/setting.sh"
+SETTING="${CWD}/setting.sh"
+
+if [ -f "$SETTING" ]; then
+    . "$SETTING"
+else
+    echo "Error: Unable to load the repository setting: $SETTING" >&2
+    exit 1
+fi
+
+if [ -z "${BIN_DIR}" ] || [ "${BIN_DIR}" = "/" ]; then
+    echo "Error: BIN_DIR is dangerous or empty: '${BIN_DIR}'" >&2
+    exit 1
+fi
+
+if [ -z "${OBJ_DIR}" ] || [ "${OBJ_DIR}" = "/" ]; then
+    echo "Error: OBJ_DIR is dangerous or empty: '${OBJ_DIR}'" >&2
+    exit 1
+fi
 
 rm -rf "$BIN_DIR" "$OBJ_DIR"
 

@@ -1,10 +1,8 @@
-#!/bin/sh
-
 ENTRY=Main.lpr
-PROGRAM=cli
+PROGRAM=cdsl
 EXECUTABLE="$PROGRAM"
 
-CWD=$(cd "$(dirname "$0")" && pwd)
+CWD=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd) || exit 1
 
 SRC_DIR="${CWD}/src"
 BIN_DIR="${CWD}/bin"
