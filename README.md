@@ -66,6 +66,14 @@ Compile the application with runtime checks and debugging symbols enabled:
 $ ./build debug
 ```
 
+### Check Memory Usage
+
+Compile the application with memory debugging enabled:
+
+```shell
+$ ./build memory
+```
+
 ### Custom Compiler Flags
 
 You can pass custom parameters to the Free Pascal Compiler by overriding the `FPC_FLAGS` environment variable:
