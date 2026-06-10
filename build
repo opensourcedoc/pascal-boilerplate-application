@@ -31,6 +31,8 @@ mkdir -p "$OBJ_DIR"
 COMPILE_MODE=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 if [ "$COMPILE_MODE" = "DEBUG" ]; then
     COMPILER_FLAG="-dDEBUG -g -gl -Cr -Ct -Co -Ci -Sa"
+elif [ "$COMPILE_MODE" = "MEMORY" ]; then
+    COMPILER_FLAG="-gh"
 else
     COMPILER_FLAG="-O2 -Xs -CX -XX"
 fi
