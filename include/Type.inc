@@ -13,6 +13,8 @@ Type
   (* Int64 is builtin in
       both Delphi and Free Pascal. *)
 
+  UInt = Cardinal;
+
   {$ifdef FPC}
   UInt8 = Byte;
   UInt16 = Word;
