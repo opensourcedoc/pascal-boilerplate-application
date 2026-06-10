@@ -4,7 +4,9 @@
 
 program Main;
 
-{$INCLUDE Type.inc}
+{$include Platform.inc}
+
+{$include Type.inc}
 
 begin
   {$ifdef DEBUG}
